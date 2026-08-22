@@ -9,4 +9,5 @@ Spec-driven development.
 - The PR is the exact code you reviewed in the plan, including comments — no surprises
 - The plan contains full production code — no “implement X” placeholders
 - Supports cross-repo work and multiple worktrees, all in the same place
+- Sets up local config files in each worktree
 - Review the plan instead of the commits
