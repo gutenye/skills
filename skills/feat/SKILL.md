@@ -1,10 +1,10 @@
 ---
-name: feat2
-description: Create and execute implementation plans end to end — worktree setup, plan file, branch, commits, push, and draft PR. Use only when the user explicitly says "/feat2"
+name: feat
+description: Create and execute implementation plans end to end — worktree setup, plan file, branch, commits, push, and draft PR. Use only when the user explicitly says "/feat"
 disable-model-invocation: true
 ---
 
-# Feat2
+# Feat
 
 Single-pass planning: brainstorm + implementation plan in one document.
 
@@ -15,7 +15,7 @@ Single-pass planning: brainstorm + implementation plan in one document.
 ## Rules
 
 - A request to add, fix, update, build, or implement something is not a request for a plan.
-- `go` enters Phase 2 only when this conversation already has an explicit feat2 plan.
+- `go` enters Phase 2 only when this conversation already has an explicit feat plan.
 - No ceremony: no separate spec docs, no decomposition rituals, no hard gates.
 - Clarifying questions only when truly ambiguous; approaches only on a real trade-off.
 - Every new file/function named in the plan ships with its full code.
@@ -205,7 +205,7 @@ yarn typecheck
 
 ## Next step
 
-Wait for the user to review and update the plan. When ready, reply **`go`** to follow the `feat2` skill and continue with Phase 2 — implement, create the branch, and open a draft PR.
+Wait for the user to review and update the plan. When ready, reply **`go`** to follow the `feat` skill and continue with Phase 2 — implement, create the branch, and open a draft PR.
 `````
 
 ### 6. Hand off

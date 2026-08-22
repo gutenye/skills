@@ -1,4 +1,4 @@
-# feat2
+# feat
 
 Spec-driven development.
 

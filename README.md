@@ -2,4 +2,4 @@
 
 | Skill | Description |
 | --- | --- |
-| feat2 | spec-driven development |
+| feat | spec-driven development |
