@@ -459,7 +459,7 @@ git -C <SOURCE_REPO> worktree add <WORKTREE_PATH> origin/<base-branch>
 
 5. Apply the workspace layout rules. Always symlink the workspace `AGENTS.md` into `<SLUG_DIR>` — including single-repo slugs, since it is the only thing that leads a later session to the workspace rules — and add sibling repo symlinks only when the task needs them.
 6. Never move the agent root. Do **not** call the `cursor-app-control` MCP tool `move_agent_to_root` (or `move_agent_to_cloned_root`), and do not call `SetActiveBranch`. Confirmed root cause of Cursor labeling the sidebar with the parent repo name instead of the slug folder: these tools register repo/branch metadata with the client.
-7. Make each worktree immediately testable: install with the repo's package manager, copy required untracked local config from the source repo (use the copy table in [Worktree map](#worktree-map) — path list and `cp` flag per repo), run required build/codegen, and run the quickest health check.
+7. Make each worktree immediately testable: install with the repo's package manager, copy required untracked local config from the source repo (use the copy table in [Worktree map](#worktree-map)), run required build/codegen, and run the quickest health check.
 
 Never symlink `node_modules`. All subsequent reads, edits, and repo-local commands must run in the worktree, not the source repo.
 
@@ -592,12 +592,9 @@ Layout map for multi-repo worktrees. Create every repository in its own `~/workt
 - Picking up work in a worktree you did not create? Audit it first: this symlink, the local files below (compare contents, not just existence — a stale placeholder counts as missing), and installed dependencies.
 - After creating a worktree, copy that project's untracked local files (they are not tracked by Git, so `git worktree add` never brings them along). Each path below is relative to the **source repo root**, so run the copies with the source repo root as cwd (or prefix both source and destination with absolute paths) and keep the same relative path inside the worktree — otherwise they silently don't get copied.
 
-| Worktree | Source repo | Copy with | Files to copy |
-| -------- | ----------- | --------- | ------------- |
-| `mobile` | `exodus/` | `cp -P` | `apps/mobile/src/background/local-config.js`, `apps/mobile/src/debug-namespaces.js`, `apps/mobile/src/dev-preferences.js` |
-| `pay` | `exodus-pay/` | `cp -L` | `apps/api/.env.development.local`, `apps/admin/.env.development.local` |
+| Worktree | Source repo | Files to copy |
+| -------- | ----------- | ------------- |
+| `mobile` | `exodus/` | `apps/mobile/src/background/local-config.js`, `apps/mobile/src/debug-namespaces.js`, `apps/mobile/src/dev-preferences.js` |
+| `pay` | `exodus-pay/` | `apps/api/.env.development.local`, `apps/admin/.env.development.local` |
 
-- Pick a new row's flag by symlink type:
-  - `cp -P` (or `cp -a`) — default; keeps a symlink as a symlink so the worktree stays in sync with the shared target. Correct for absolute symlinks, and a no-op for regular files.
-  - `cp -L` — use when the source is a **relative** symlink pointing outside the repo. A preserved relative symlink resolves to a non-existent path from the worktree, so copy the contents instead.
 - Create parent directories first (`mkdir -p "<worktree>/$(dirname <file>)"`); `cp` fails when the nested path does not exist yet.
