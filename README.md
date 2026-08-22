@@ -2,4 +2,4 @@
 
 | Skill | Description |
 | --- | --- |
-| feat | spec-driven development |
+| [feat](skills/feat/README.md) | spec-driven development |
