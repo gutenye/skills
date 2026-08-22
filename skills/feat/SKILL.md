@@ -599,5 +599,5 @@ Layout map for multi-repo worktrees. Create every repository in its own `~/workt
 
 - Pick a new row's flag by symlink type:
   - `cp -P` (or `cp -a`) — default; keeps a symlink as a symlink so the worktree stays in sync with the shared target. Correct for absolute symlinks, and a no-op for regular files.
-  - `cp -L` — use when the source is a **relative** symlink pointing outside the repo (e.g. pay's `.env.development.local` → `../../../000/...`). A preserved relative symlink resolves to a non-existent path from the worktree, so copy the contents instead.
+  - `cp -L` — use when the source is a **relative** symlink pointing outside the repo. A preserved relative symlink resolves to a non-existent path from the worktree, so copy the contents instead.
 - Create parent directories first (`mkdir -p "<worktree>/$(dirname <file>)"`); `cp` fails when the nested path does not exist yet.
