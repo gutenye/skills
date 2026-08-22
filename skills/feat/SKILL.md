@@ -1,7 +1,6 @@
 ---
 name: feat
 description: Create and execute implementation plans end to end — worktree setup, plan file, branch, commits, push, and draft PR. Use only when the user explicitly says "/feat"
-disable-model-invocation: true
 ---
 
 # Feat
