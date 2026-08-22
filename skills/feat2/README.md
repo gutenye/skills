@@ -7,5 +7,5 @@ Spec-driven development.
 - Plan and PR description are short and easy to read — no extra prose
 - The PR is the same code you reviewed in the plan, including comments; no surprises
 - Full production code in the plan — no “implement X” placeholders
-- New workflow: review the plan instead of commits
 - Work on cross-repo features with multiple worktrees in the same place
+- New workflow: review the plan instead of commits
